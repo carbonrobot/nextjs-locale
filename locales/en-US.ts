@@ -8,6 +8,10 @@ const translations: Resources = {
   forms: {
     label: 'US Form Label',
   },
+  errors: {
+    required: 'Required',
+    notfound: 'Not Found',
+  },
 };
 
 export default translations;

@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { Widget } from '../../../components/widget';
 import { Resources, resources } from '../../../locales';
 import { configs, SiteConfig } from '../../../sites';
+import { pick } from '../../../utils';
 
 interface PageProps {
-  resources: Resources;
-  staticSiteConfig: SiteConfig;
+  resources: Pick<Resources, 'localePage' | 'forms'>;
+  staticSiteConfig: Pick<SiteConfig, 'flag' | 'region'>;
 }
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async ({
@@ -15,10 +16,13 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   const { country, language } = params as any;
   const locale = `${language}-${country.toUpperCase()}`;
 
+  const localeResources = pick(resources[locale], ['localePage', 'forms']);
+  const staticSiteConfig = pick(configs[country], ['flag', 'region']);
+
   return {
     props: {
-      resources: resources[locale],
-      staticSiteConfig: configs[country],
+      resources: localeResources,
+      staticSiteConfig,
     },
   };
 };

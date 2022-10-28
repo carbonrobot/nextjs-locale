@@ -6,4 +6,8 @@ export interface Resources {
   forms: {
     label: string;
   };
+  errors: {
+    required: string;
+    notfound: string;
+  };
 }
