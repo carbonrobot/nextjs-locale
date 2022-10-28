@@ -1,4 +1,4 @@
-import { Resources } from './localeType';
+import { Resources } from '.';
 
 const translations: Resources = {
   localePage: {

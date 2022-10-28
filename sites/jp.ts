@@ -1,4 +1,4 @@
-import { SiteConfig } from './types';
+import { SiteConfig } from '.';
 
 export const config: SiteConfig = {
   flag: '🇯🇵',

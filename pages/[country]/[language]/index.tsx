@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { Widget } from '../../../components/widget';
-import { Resources } from '../../../locales/localeType';
-import { SiteConfig } from '../../../sites/types';
+import { Resources, resources } from '../../../locales';
+import { configs, SiteConfig } from '../../../sites';
 
 interface PageProps {
   resources: Resources;
@@ -15,15 +15,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   const { country, language } = params as any;
   const locale = `${language}-${country.toUpperCase()}`;
 
-  const [staticSiteConfig, resources] = await Promise.all([
-    import(`../../../sites/${country}`).then((mod) => mod.config),
-    import(`../../../locales/${locale}`).then((res) => res.default),
-  ]);
-
   return {
     props: {
-      staticSiteConfig,
-      resources,
+      resources: resources[locale],
+      staticSiteConfig: configs[country],
     },
   };
 };
