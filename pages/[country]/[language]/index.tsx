@@ -16,6 +16,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   const { country, language } = params as any;
   const locale = `${language}-${country.toUpperCase()}`;
 
+  // each page hydrates using only the keys it needs
   const localeResources = pick(resources[locale], ['localePage', 'forms']);
   const staticSiteConfig = pick(configs[country], ['flag', 'region']);
 
