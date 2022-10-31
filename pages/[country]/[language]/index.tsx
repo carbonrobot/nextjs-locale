@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   const locale = `${language}-${country.toUpperCase()}`;
 
   // each page hydrates using only the keys it needs
+  // we can use flay keys or dot selectors, eg. "forms.email.regex"
   const localeResources = pick(resources[locale], ['localePage', 'forms']);
   const staticSiteConfig = pick(configs[country], ['flag', 'region']);
 
