@@ -20,3 +20,16 @@ export function select<T extends object, U extends keyof T>(
   while (arr.length && (iter = iter[arr.shift()]));
   return iter;
 }
+
+/**
+ * Return a union of deep dot-separated property paths from an object.
+ */
+ type PathsImpl<T, K extends keyof T> = K extends string
+ ? T[K] extends Record<string, unknown>
+   ? T[K] extends ArrayLike<unknown>
+     ? K | `${K}.${PathsImpl<T[K], Exclude<keyof T[K], keyof unknown[]>>}`
+     : K | `${K}.${PathsImpl<T[K], keyof T[K]>}`
+   : K
+ : never;
+
+export type Paths<T> = PathsImpl<T, keyof T> | keyof T;

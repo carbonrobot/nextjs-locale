@@ -1,9 +1,15 @@
 import { Resources } from '.';
 
 const translations: Resources = {
-  localePage: {
-    title: 'THIS IS メールアドレス',
-    message: 'JP Message',
+  pages: {
+    home: {
+      title: 'JA Home Page',
+      message: 'メールアドレス',
+    },
+    orders: {
+      title: 'JA Orders Page',
+      message: 'Orders page message',
+    },
   },
   forms: {
     label: 'JP form label',

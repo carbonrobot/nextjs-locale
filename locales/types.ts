@@ -1,7 +1,13 @@
 export interface Resources {
-  localePage: {
-    title: string;
-    message: string;
+  pages: {
+    home: {
+      title: string;
+      message: string;
+    };
+    orders: {
+      title: string;
+      message: string;
+    };
   };
   forms: {
     label: string;

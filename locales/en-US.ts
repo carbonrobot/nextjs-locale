@@ -1,9 +1,15 @@
 import { Resources } from '.';
 
 const translations: Resources = {
-  localePage: {
-    title: 'THIS IS USA',
-    message: 'USA Message',
+  pages: {
+    home: {
+      title: 'EN Home Page',
+      message: 'Home page message',
+    },
+    orders: {
+      title: 'EN Orders Page',
+      message: 'Orders page message',
+    },
   },
   forms: {
     label: 'US Form Label',
